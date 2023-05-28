@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
+use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
@@ -12,7 +15,12 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::paginate(5);
+        /*if(!Gate::allows('index', $posts[0])) {
+            abort(403);
+        }*/
+
+        return view('dashboard.posts.index', compact('posts'));
     }
 
     /**
@@ -20,7 +28,13 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::pluck('id', 'title');
+        $post = new Post();
+        /*if(!Gate::allows('create', $post)) {
+            abort(403);
+        }*/
+
+        return view('dashboard.posts.create', compact('categories', 'post'));
     }
 
     /**
