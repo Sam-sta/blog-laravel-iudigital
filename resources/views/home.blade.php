@@ -14,7 +14,23 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    <div class="card" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Módulo de post</h5>
+                          <p class="card-text">Crear publicaciones.</p>
+                          <a href="#" class="btn btn-primary">Ir</a>
+                        </div>
+                    </div>
+
+                    <div class="card" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Módulo de category</h5>
+                          <p class="card-text">Crear categorias.</p>
+                          <a href="#" class="btn btn-primary">Ir</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
