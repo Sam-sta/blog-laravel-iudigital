@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        Create de Post
-    </div>
+        <h1>Crear Publicaciones</h1>
+        @include('dashboard.fragment._errors-form')
+        <form action="{{ route('posts.store') }}" method="post">
+            @include('dashboard.posts._form')
+        </form>
 @endsection
