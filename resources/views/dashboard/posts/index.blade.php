@@ -7,7 +7,7 @@
             <th>Titulo</th>
             <th>Categoria</th>
             <th>Posted</th>
-            <th>Acciones</th>
+            <th colspan="2">Acciones</th>
         </thead>
         <tbody>
             @foreach ($posts as $post)
