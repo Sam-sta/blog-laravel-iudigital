@@ -23,7 +23,7 @@ class PutRequest extends FormRequest
     {
         return [
             'title' => 'required|min:5|max:500',
-            'slug' => 'required|min:5|max:500|unique:posts',
+            'slug' => 'required|min:5|max:500|unique:posts' . $this->route('post')->id,
             'content' => 'required|min:7',
             'category_id' => 'required|integer|exists:categories,id',
             'description' => 'required|min:7',
