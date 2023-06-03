@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreRequest;
+use App\Http\Requests\Post\PutRequest;
+use App\Http\Requests\Post\StoreRequest;
 use App\Models\Post;
 use App\Models\Category;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
@@ -44,7 +44,8 @@ class PostController extends Controller
     public function store(StoreRequest $request)
     {
         $post = new Post($request->validated());
-        return to_route('posts.index')->with('status', 'Nuevo post creado');
+        $post->save();
+        return redirect()->route('posts.index')->with('status', 'Nuevo post creado');
     }
 
     /**
@@ -52,7 +53,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('dashboard.posts.show', compact('post'));
     }
 
     /**
@@ -60,15 +61,25 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        $categories = Category::pluck('id', 'title');
+        /*if(!Gate::allows('update', $post)) {
+            abort(403);
+        }*/
+        return view('dashboard.posts.edit', compact('categories', 'post'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(PutRequest $request, Post $post)
     {
-        //
+        $data = $request->validated();
+        if (isset($data['image'])) {
+            $data['image'] = $filename = time().".".$data['image']->extension();
+            $request->image->move(public_path('images/otro'), $filename);
+        }
+        $post->update($data);
+        return redirect()->route('posts.index')->with('status', 'Publicación actualizada');
     }
 
     /**
@@ -76,6 +87,10 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        /*if (!Gate::allows('delete', $post)) {
+            abort(403);
+        }*/
+        $post->delete();
+        return redirect()->route('posts.index')->with('status', 'Publicación eliminada');
     }
 }
