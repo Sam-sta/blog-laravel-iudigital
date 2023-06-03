@@ -44,4 +44,4 @@
     <input type="file" name="image" id="image">
 </div>
 @endif
-<input class="btn btn-primary" type="submit" value="Guardar">
+<input class="btn btn-primary mt-3" type="submit" value="Guardar">
