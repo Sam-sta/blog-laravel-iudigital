@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('dashboard.layout')
 
 @section('content')
         <h1>Crear Publicaciones</h1>
