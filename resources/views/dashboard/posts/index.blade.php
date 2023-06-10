@@ -1,7 +1,7 @@
 @extends('dashboard.layout')
 
 @section('content')
-    <a class="btn btn-success my-3" href="{{ route('posts.create') }}">Crear publicación</a>
+    <a class="btn btn-primary" href="{{ route('posts.create') }}">Crear publicación</a>
     <table class="table">
         <thead>
             <th>Titulo</th>

@@ -11,4 +11,4 @@
     <input class="form-control" type="text" name="slug" id="slug"
         value="{{ old('slug', $category->slug) }}">
 </div>
-<input class="btn btn-primary" type="submit" value="Guardar">
+<input class="btn btn-primary mt-3" type="submit" value="Guardar">

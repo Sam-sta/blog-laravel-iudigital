@@ -1,7 +1,7 @@
 @extends('dashboard.layout')
 
 @section('content')
-    <a class="btn btn-success my-3" href="{{ route('categories.create') }}">Crear categoría</a>
+    <a class="btn btn-primary" href="{{ route('categories.create') }}">Crear categoría</a>
     <table class="table">
         <thead>
             <th>Nombre Categoria</th>
@@ -13,7 +13,7 @@
                 <tr>
                     <td>{{ $category->title }}</td>
                     <td>{{ $category->slug }}</td>
-                    <td width="10px">
+                    <td>
                         <a class="btn btn-primary" href="{{ route('categories.edit', $category) }}">Editar</a>
                         <a class="btn btn-primary" href="{{ route('categories.show', $category) }}">Ver</a>
                         <form action="{{ route('categories.destroy', $category) }}" method="POST">

@@ -30,8 +30,8 @@
         @endif
 
 
-        <div class="container">
-            <div class="card card-white mt-4">
+        <div class="container mt-4">
+            <div class="card">
                 @yield('content')
             </div>
         </div>
