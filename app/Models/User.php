@@ -42,4 +42,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function isAdmin() {
+        return $this->rol == 'admin';
+    }
+
+    public function AccessDashboard() {
+        return $this->hasRole('guest');
+    }
+
+    public function posts() {
+        return $this->hasMany(Post::class);
+    }
 }

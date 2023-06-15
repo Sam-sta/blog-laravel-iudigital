@@ -1,7 +1,9 @@
 @extends('dashboard.layout')
 
 @section('content')
-    <a class="btn btn-primary" href="{{ route('posts.create') }}">Crear publicación</a>
+    @can('guest.posts.create')
+        <a class="btn btn-primary" href="{{ route('posts.create') }}">Crear publicación</a>
+    @endcan
     <table class="table">
         <thead>
             <th>Titulo</th>
@@ -16,13 +18,17 @@
                     <td>{{ $post->category->title }}</td>
                     <td>{{ $post->posted }}</td>
                     <td>
-                        <a class="btn btn-primary" href="{{ route('posts.edit', $post) }}">Editar</a>
+                        @can('editor.posts.edit')
+                            <a class="btn btn-primary" href="{{ route('posts.edit', $post) }}">Editar</a>
+                        @endcan
                         <a class="btn btn-primary" href="{{ route('posts.show', $post) }}">Ver</a>
-                        <form action="{{ route('posts.destroy', $post) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger mt-2" type="submit">Eliminar</button>
-                        </form>
+                        @can('editor.posts.destroy')
+                            <form action="{{ route('posts.destroy', $post) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger mt-2" type="submit">Eliminar</button>
+                            </form>
+                        @endcan
                     </td>
                 </tr>
             @endforeach

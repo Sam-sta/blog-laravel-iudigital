@@ -32,6 +32,7 @@
 
         <div class="container mt-4">
             <div class="card">
+                {{ Auth::user()->email }}
                 @yield('content')
             </div>
         </div>
