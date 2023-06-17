@@ -34,8 +34,7 @@ class PostController extends Controller
         /*if(!Gate::allows('create', $post)) {
             abort(403);
         }*/
-        $task = 'create';
-        return view('dashboard.posts.create', compact('categories', 'post', 'task'));
+        return view('dashboard.posts.create', compact('categories', 'post'));
     }
 
     /**
@@ -65,9 +64,7 @@ class PostController extends Controller
         /*if(!Gate::allows('update', $post)) {
             abort(403);
         }*/
-        
-        $task = 'edit';
-        return view('dashboard.posts.edit', compact('categories', 'post', 'task'));
+        return view('dashboard.posts.edit', compact('categories', 'post'));
     }
 
     /**

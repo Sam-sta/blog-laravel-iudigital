@@ -47,7 +47,7 @@ class User extends Authenticatable
         return $this->rol == 'admin';
     }
 
-    public function AccessDashboard() {
+    public function accessDashboard() {
         return $this->hasRole('guest');
     }
 

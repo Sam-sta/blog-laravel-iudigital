@@ -37,11 +37,4 @@
     <label for="description">Descripción</label>
     <textarea class="form-control" name="description" id="description" cols="10" rows="5">{{ old('description', $post->description) }}</textarea>
 </div>
-
-@if (isset($task) && $task == 'edit')
-<div class="form-group">
-    <label for="image">Foto de publicación</label>
-    <input type="file" name="image" id="image">
-</div>
-@endif
 <input class="btn btn-primary mt-3" type="submit" value="Guardar">

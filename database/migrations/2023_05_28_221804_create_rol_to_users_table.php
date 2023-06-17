@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rol_to_users', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->enum('rol', ['admin', 'guest', 'editor'])->nullable()->default('guest');
         });
     }
 
@@ -22,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rol_to_users');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('rol');
+        });
     }
 };

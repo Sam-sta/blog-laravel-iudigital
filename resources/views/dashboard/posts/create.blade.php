@@ -1,4 +1,4 @@
-@extends('dashboard.layout')
+@extends('web.layout')
 
 @section('content')
         <h1>Crear Publicaciones</h1>

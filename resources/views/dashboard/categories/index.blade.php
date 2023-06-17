@@ -1,4 +1,4 @@
-@extends('dashboard.layout')
+@extends('web.layout')
 
 @section('content')
     <a class="btn btn-primary" href="{{ route('categories.create') }}">Crear categoría</a>
